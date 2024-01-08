@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ javascript</title>
+    <link rel="stylesheet" href="globals.css">
+    <style>
+        .footer > div {
+            /* background-color: red; */
+            padding: 5px;
+        }
+        .footer {
+            justify-content: space-between;
+        }
+        .footer > div:nth-child(2) > a {
+            background-color: #00aa00aa;
+            padding: 5px;
+            border-radius: 1px;
+        }
+        .footer > div:nth-child(2) > a:nth-child(2) {
+            background-color: #aa0000cc;
+        }
+
+        #quest {
+            background-color: #00aa00aa;
+            padding: 5px;
+            border-radius: 1px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .container > div {
+            background-color: red;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+   <div class="quizTitle">pytania</div> 
+   <div class="container">
+    <div>test</div>
+    <div>test</div>
+   </div>
+   <div class="footer">
+    <div>
+        rozwiązane pytania <span id="quest">10/10</span>
+    </div>
+    <div>
+        <a href="">oceń test</a> 
+        <a href="/">anuluj</a>
+    </div>
+   </div>
+</body>
+</html>
