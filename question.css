@@ -1,0 +1,44 @@
+.question {
+  border-radius: 1px;
+  background-color: #30303055;
+  /* width: max-content; */
+  min-width: 400px;
+  max-width: 80vw;
+  padding: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #bbbbbb;
+}
+.question > .answers {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  align-content: center;
+  column-gap: 30px;
+}
+.answers > label > div {
+  background-color: #303030;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.question > .answers > label > input[type="radio"] {
+  appearance: none;
+  background-color: red;
+}
+
+.answers div {
+  padding: 7px;
+  font-weight: 200;
+}
+.answers > label > input[type="radio"]:checked ~ div {
+  background-color: #bb00bbdd;
+  font-weight: 600;
+  color: black;
+}
+
+@media only screen and (width <= 1024px) {
+  .question > .answers {
+    grid-template-columns: 1fr;
+  } 
+}

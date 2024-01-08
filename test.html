@@ -1,76 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QUIZ javascript</title>
-    <link rel="stylesheet" href="globals.css">
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="question.css">
+    <link rel="stylesheet" href="footer.css">
     <style>
-        .footer>div {
-            /* background-color: red; */
-            padding: 5px;
-        }
+      .footer > div {
+        /* background-color: red; */
+        padding: 5px;
+      }
 
-        .footer {
-            justify-content: space-between;
-        }
+      .footer {
+        justify-content: space-between;
+      }
 
-        .footer>div:nth-child(2)>a {
-            background-color: #00aa00aa;
-            padding: 5px;
-            border-radius: 1px;
-        }
+      .footer > div:nth-child(2) > a {
+        background-color: #00aa00aa;
+        padding: 5px;
+        border-radius: 1px;
+      }
 
-        .footer>div:nth-child(2)>a:nth-child(2) {
-            background-color: #aa0000cc;
-        }
+      .footer > div:nth-child(2) > a:nth-child(2) {
+        background-color: #aa0000cc;
+      }
 
-        #quest {
-            background-color: #00aa00aa;
-            padding: 5px;
-            border-radius: 1px;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-        }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="quizTitle">pytania</div>
     <div class="container">
-        <div class="question">
-            <div class="desc">tytaj pojawia sie opis pytania Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Quidem consequatur nemo voluptatem itaque non et? Architecto temporibus neque numquam odio rerum nobis
-                distinctio accusantium! Quo veniam laborum natus atque assumenda.</div>
-            <div class="answers">
-                <label>
-                    <input type="radio" name="test" >
-                    <span>odp3</span>
-                </label>
-                <label>
-                    <input type="radio" name="test" >
-                    <span>odp3</span>
-                </label>
-            </div>
+      <div class="question">
+        <div class="desc">
+          tytaj pojawia sie opis pytania Lorem ipsum, dolor sit amet consectetur
+          adipisicing elit. Quidem consequatur nemo voluptatem itaque non et?
+          Architecto temporibus neque numquam odio rerum nobis distinctio
+          accusantium! Quo veniam laborum natus atque assumenda.
         </div>
-        <div class="question">test</div>
+        <div class="answers">
+          <label>
+            <input type="radio" name="test" />
+            <div>
+              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
+              sint cillum sint consectetur cupidatat.
+            </div>
+          </label>
+          <label>
+            <input type="radio" name="test" />
+            <div>
+              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
+              sint cillum sint consectetur cupidatat.
+            </div>
+          </label>
+          <label>
+            <input type="radio" name="test" />
+            <div>
+              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
+              sint cillum sint consectetur cupidatat.
+            </div> </label
+          ><label>
+            <input type="radio" name="test" />
+            <div>
+              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
+              sint cillum sint consectetur cupidatat.
+            </div>
+          </label>
+        </div>
+      </div>
     </div>
     <div class="footer">
-        <div>
-            rozwiązane pytania <span id="quest">10/10</span>
-        </div>
-        <div>
-            <a href="">oceń test</a>
-            <a href="index.html">anuluj</a>
-        </div>
+      <div>rozwiązane pytania <span id="correctCount" class="green-info">10/10</span></div>
+      <div>
+        <a href="">oceń test</a>
+        <a href="index.html">anuluj</a>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
