@@ -1,7 +1,7 @@
 body {
     margin: 0px;
     background-color: #202020;
-    color: white; 
+    color: white;
     font-family: sans-serif;
 }
 
@@ -37,7 +37,7 @@ a {
     gap: 30px;
 }
 
-.menu > a {
+.menu>a {
     display: block;
     background-color: #303030;
     border-radius: 3px;
@@ -61,6 +61,36 @@ a {
 
     box-shadow: 0px 0px 10px 0px #30303055;
 }
-.footer > div {
+
+.footer>div {
     width: max-content;
+}
+
+
+.question {
+    border-radius: 1px;
+    background-color: #30303055;
+    /* width: max-content; */
+    min-width: 400px;
+    max-width: 80vw;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #bbbbbb;
+}
+.question > .answers {
+    /* background-color: red; */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 30px;
+}
+
+.question > .answers > label > input[type="radio"] {
+    appearance: none;
+    background-color: red;
+}
+input[type="radio"]:checked {
+}
+.question > .answers > label {
 }
