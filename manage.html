@@ -1,12 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QUIZ javscript</title>
-    <link rel="stylesheet" href="globals.css">
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="question.css" />
+    <link rel="stylesheet" href="test.css" />
+    <style>
+      .box {
+        /* background-color: red; */
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .title {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+      .testsViewer {
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      .test > .nav > div:nth-child(2) {
+        background-color: #aa0000aa;
+      }
+      .test > .nav > div:nth-child(1) {
+        background-color: #00aa00aa;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="template">
+      <div class="test">
+        <div class="title">test weidzy o javascript</div>
+        <div class="description">
+          ten test posiada baze wiedzy o jezyku programowania Javascript
+        </div>
+        <div class="nav">
+          <div>zarządzaj</div>
+          <div>usuń</div>
+        </div>
+      </div>
+    </div>
+    <div class="quizTitle">zarządzaj testami</div>
+    <div class="box">
+      <div class="title">Wybierz Test</div>
+      <div class="testsViewer"></div>
+    </div>
+
+    <script src="manage.js"></script>
+  </body>
 </html>

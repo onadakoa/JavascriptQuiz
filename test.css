@@ -1,0 +1,22 @@
+.test {
+  /* background-color: red; */
+  background-color: #303030;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  border-radius: 3px;
+}
+
+.test > .nav {
+  display: flex;
+  gap: 15px;
+  padding: 5px;
+}
+.test > .nav > div {
+  cursor: pointer;
+  background-color: black;
+  padding: 10px;
+}
+

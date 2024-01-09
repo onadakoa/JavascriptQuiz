@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QUIZ javascript</title>
     <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="question.css">
-    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="question.css" />
+    <link rel="stylesheet" href="footer.css" />
     <style>
       .footer > div {
         /* background-color: red; */
@@ -70,20 +70,23 @@
             </div> </label
           ><label>
             <input type="radio" name="test" />
-            <div>
-              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
-              sint cillum sint consectetur cupidatat.
-            </div>
+            <div>() => {/* code here */}</div>
           </label>
         </div>
       </div>
     </div>
     <div class="footer">
-      <div>rozwiązane pytania <span id="correctCount" class="green-info">10/10</span></div>
+      <div>
+        rozwiązane pytania
+        <span id="correctCount" class="green-info">10/10</span>
+      </div>
       <div>
         <a href="">oceń test</a>
         <a href="index.html">anuluj</a>
       </div>
     </div>
+    <script>
+      console.log(localStorage.getItem("tests"));
+    </script>
   </body>
 </html>

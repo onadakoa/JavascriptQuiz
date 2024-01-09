@@ -6,10 +6,15 @@ body {
   font-family: sans-serif;
 }
 
+.template {
+  display: none;
+  visibility: hidden;
+}
+
 .green-info {
-        background-color: #00aa00aa;
-        padding: 5px;
-        border-radius: 1px;
+  background-color: #00aa00aa;
+  padding: 5px;
+  border-radius: 1px;
 }
 .red-info {
   background-color: #aa0000aa;
@@ -19,7 +24,6 @@ body {
 .pointer {
   cursor: pointer;
 }
-
 
 .quizTitle {
   /* background-color: red; */
@@ -60,5 +64,3 @@ a {
   min-width: 200px;
   text-align: center;
 }
-
-
