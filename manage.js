@@ -1,4 +1,4 @@
-const testsViewer = document.querySelector(".testsViewer");
+const testsViewer = document.querySelector(".testsViewer")
 const template = document.querySelector(".template > .test ");
 const template_title = document.querySelector(".template > .test > .title");
 const template_description = document.querySelector(
@@ -10,6 +10,11 @@ const template_manage = document.querySelector(
 const template_delete = document.querySelector(
   ".template > .test > .nav > div:nth-child(2)",
 );
+
+/** @type {HTMLDivElement} */
+const testsManage = document.querySelector("#testsManage")
+/** @type {HTMLDivElement} */
+const testsSelection = document.querySelector("#testsSelection")
 
 function renderTestView(title, description, onManage, onDelete) {
   template_title.innerHTML = title;
@@ -27,3 +32,11 @@ let tests = JSON.parse(localStorage.getItem("tests"));
 tests.forEach((e) => {
   renderTestView(e.title, e.description, () => {}, () => {});
 });
+
+
+
+function createTest() {
+  testsSelection.classList.add("hidden")
+  testsManage.classList.remove("hidden")
+
+}

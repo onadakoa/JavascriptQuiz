@@ -24,6 +24,12 @@ body {
 .pointer {
   cursor: pointer;
 }
+.hidden {
+  display: none !important;
+}
+.noResize{
+  resize: none;
+}
 
 .quizTitle {
   /* background-color: red; */
@@ -63,4 +69,9 @@ a {
   padding: 10px;
   min-width: 200px;
   text-align: center;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
 }
