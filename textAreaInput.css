@@ -1,11 +1,13 @@
-textarea.input, input.input {
-    font-family: sans-serif;
-    font-weight: 100;
-    font-size: 0.95rem;
+textarea.input,
+input.input {
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 0.95rem;
 
-    padding: 5px;
-    background-color: #404040;
-    color: white;
-    border: 0px;
-    overflow-y: hidden;
+  padding: 5px;
+  background-color: #404040;
+  color: white;
+  border: 0px;
+  overflow-y: hidden;
+
 }

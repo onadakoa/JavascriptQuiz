@@ -42,3 +42,12 @@
     grid-template-columns: 1fr;
   } 
 }
+
+
+.mark {
+  border-radius: 50%;
+  padding: 3px 5px;
+  background-color: #505050;
+  border: 1px solid #ffffff55;
+  width: min-content;
+}

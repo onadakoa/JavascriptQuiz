@@ -1,14 +1,14 @@
 const testsViewer = document.querySelector(".testsViewer")
-const template = document.querySelector(".template > .test ");
-const template_title = document.querySelector(".template > .test > .title");
+const template = document.querySelector(".template#test > .test ");
+const template_title = document.querySelector(".template#test > .test > .title");
 const template_description = document.querySelector(
-  ".template > .test > .description",
+  ".template#test > .test > .description",
 );
 const template_manage = document.querySelector(
-  ".template > .test > .nav > div:nth-child(1)",
+  ".template#test > .test > .nav > div:nth-child(1)",
 );
 const template_delete = document.querySelector(
-  ".template > .test > .nav > div:nth-child(2)",
+  ".template#test > .test > .nav > div:nth-child(2)",
 );
 
 /** @type {HTMLDivElement} */
@@ -34,9 +34,41 @@ tests.forEach((e) => {
 });
 
 
+// questions 
+const questions = document.querySelector(".questions")
+const qtemplate_question = document.querySelector(".template#question > .question")
+const qtemplate_number = document.querySelector(".template#question > .question > span")
+const tqtemplate_answers = document.querySelectorAll(".template#question > .question > .answers > div > textarea")
+const qtemplate_description = document.querySelector(".template#question > .question > .desc > textarea")
 
+const ntest_title = document.querySelector("#newTestTitle")
+const ntest_description= document.querySelector("#newTestDescription")
+
+
+function renderQuestions(description, answers) {
+  qtemplate_description.innerHTML = description;
+  qtemplate_number.innerHTML = 32;
+
+  answers.forEach((v,i) => {
+      tqtemplate_answers[i].innerHTML = v.value;
+  })
+  let tmp = qtemplate_question.cloneNode(true)
+
+  questions.appendChild(tmp)
+}
 function createTest() {
+  questions.innerHTML = ""
   testsSelection.classList.add("hidden")
   testsManage.classList.remove("hidden")
 
+  localStorage.setItem("mtest", JSON.stringify(DEFAULT_TEST))
+
+  ntest_title.value = DEFAULT_TEST.title;
+  ntest_description.value = DEFAULT_TEST.description
+
+  DEFAULT_TEST.questions.forEach(v => {
+    renderQuestions(v.description, v.answers) 
+  })
 }
+// test
+

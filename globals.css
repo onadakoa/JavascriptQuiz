@@ -1,5 +1,6 @@
 body {
   margin: 0px;
+  margin-bottom: 50px;
   padding: 0px;
   background-color: #202020;
   color: white;
@@ -29,6 +30,10 @@ body {
 }
 .noResize{
   resize: none;
+}
+.weight900 {
+  font-weight: 900;
+  font-size: 1.1rem;
 }
 
 .quizTitle {

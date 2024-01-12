@@ -6,9 +6,10 @@
     <title>QUIZ javscript</title>
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="question.css" />
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="textAreaInput.css">
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="textAreaInput.css" />
     <link rel="stylesheet" href="test.css" />
+    <script src="defaultTest.js"></script>
     <style>
       .box {
         /* background-color: red; */
@@ -39,10 +40,43 @@
       .input {
         width: 20rem;
       }
+      .question {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+      .question > div {
+        width: 100%;
+      }
+      .questions {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      .questions .input {
+        width: calc(100% - 10px);
+      }
+      .question > .answers {
+        grid-template-columns: 1fr;
+      }
+      
+      .answers > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .question .red-info {
+        box-sizing: border-box;
+        text-align: center;
+      }
+
     </style>
   </head>
   <body>
-    <div class="template">
+    <div class="template" id="test">
       <div class="test">
         <div class="title">test weidzy o javascript</div>
         <div class="description">
@@ -51,6 +85,33 @@
         <div class="nav">
           <div>zarządzaj</div>
           <div>usuń</div>
+        </div>
+      </div>
+    </div>
+    <div class="template" id="question">
+        <div class="question">
+          <span class="mark weight900">1</span>
+        <div class="red-info pointer ">-</div>
+          <div class="desc">
+            <textarea rows="5" cols="30" class="input noResize"></textarea>
+          </div>
+          <div class="answers">
+            <div>
+              <span class="mark">A</span>
+              <textarea rows="1" cols="30" class="noResize input"></textarea>
+            </div>
+            <div>
+              <span class="mark">B</span>
+              <textarea rows="1" cols="30" class="noResize input"></textarea>
+            </div>
+            <div>
+              <span class="mark">C</span>
+              <textarea rows="1" cols="30" class="noResize input"></textarea>
+            </div>
+            <div>
+              <span class="mark">D</span>
+              <textarea rows="1" cols="30" class="noResize input"></textarea>
+            </div>
         </div>
       </div>
     </div>
@@ -70,13 +131,22 @@
       </div>
       <div class="test">
         <div>
-          <input type="text" class="input" id="newTestTitle" value="testTitle">
+          <input
+            type="text"
+            class="input"
+            id="newTestTitle"
+            value="testTitle"
+          />
         </div>
         <div>
-          <textarea rows="2" class="input noResize">test Description</textarea>
+          <textarea id="newTestDescription" rows="2" class="input noResize">test Description</textarea>
         </div>
       </div>
-      <div class="title"></div>
+      <div class="title">Ustaw pytania</div>
+      <div class="questions">
+
+
+
     </div>
 
     <div class="footer">
