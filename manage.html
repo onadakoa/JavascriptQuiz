@@ -1,160 +1,164 @@
 <!doctype html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QUIZ javscript</title>
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="question.css" />
-    <link rel="stylesheet" href="footer.css" />
-    <link rel="stylesheet" href="textAreaInput.css" />
-    <link rel="stylesheet" href="test.css" />
-    <script src="defaultTest.js"></script>
-    <style>
-      .box {
-        /* background-color: red; */
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-      }
 
-      .title {
-        font-size: 1.1rem;
-        font-weight: 600;
-      }
-      .testsViewer {
-        min-width: 300px;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-      }
-      .test > .nav > div:nth-child(2) {
-        background-color: #aa0000aa;
-      }
-      .test > .nav > div:nth-child(1) {
-        background-color: #00aa00aa;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QUIZ javscript</title>
+  <link rel="stylesheet" href="globals.css" />
+  <link rel="stylesheet" href="question.css" />
+  <link rel="stylesheet" href="footer.css" />
+  <link rel="stylesheet" href="textAreaInput.css" />
+  <link rel="stylesheet" href="test.css" />
+  <script src="defaultTest.js"></script>
+  <style>
+    .box {
+      /* background-color: red; */
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
 
-      .input {
-        width: 20rem;
-      }
-      .question {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-      }
-      .question > div {
-        width: 100%;
-      }
-      .questions {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-      }
-      .questions .input {
-        width: calc(100% - 10px);
-      }
-      .question > .answers {
-        grid-template-columns: 1fr;
-      }
-      
-      .answers > div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-      }
+    .title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
 
-      .question .red-info {
-        box-sizing: border-box;
-        text-align: center;
-      }
+    .testsViewer {
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
 
-    </style>
-  </head>
-  <body>
-    <div class="template" id="test">
-      <div class="test">
-        <div class="title">test weidzy o javascript</div>
-        <div class="description">
-          ten test posiada baze wiedzy o jezyku programowania Javascript
-        </div>
-        <div class="nav">
-          <div>zarządzaj</div>
-          <div>usuń</div>
-        </div>
+    .test>.nav>div:nth-child(2) {
+      background-color: #aa0000aa;
+    }
+
+    .test>.nav>div:nth-child(1) {
+      background-color: #00aa00aa;
+    }
+
+    .input {
+      width: 20rem;
+    }
+
+    .question {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .question>div {
+      width: 100%;
+    }
+
+    .questions {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .questions .input {
+      width: calc(100% - 10px);
+    }
+
+    .question>.answers {
+      grid-template-columns: 1fr;
+    }
+
+    .answers>div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .question .red-info {
+      box-sizing: border-box;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="template" id="test">
+    <div class="test">
+      <div class="title">test weidzy o javascript</div>
+      <div class="description">
+        ten test posiada baze wiedzy o jezyku programowania Javascript
       </div>
-    </div>
-    <div class="template" id="question">
-        <div class="question">
-          <span class="mark weight900">1</span>
-        <div class="red-info pointer ">-</div>
-          <div class="desc">
-            <textarea rows="5" cols="30" class="input noResize"></textarea>
-          </div>
-          <div class="answers">
-            <div>
-              <span class="mark">A</span>
-              <textarea rows="1" cols="30" class="noResize input"></textarea>
-            </div>
-            <div>
-              <span class="mark">B</span>
-              <textarea rows="1" cols="30" class="noResize input"></textarea>
-            </div>
-            <div>
-              <span class="mark">C</span>
-              <textarea rows="1" cols="30" class="noResize input"></textarea>
-            </div>
-            <div>
-              <span class="mark">D</span>
-              <textarea rows="1" cols="30" class="noResize input"></textarea>
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class="quizTitle">zarządzaj testami</div>
-    <div class="box" id="testsSelection">
-      <div class="title">Wybierz Test</div>
       <div class="nav">
-        <div class="green-info pointer" onclick="createTest()">dodaj test</div>
+        <div>zarządzaj</div>
+        <div>usuń</div>
       </div>
-      <div class="testsViewer"></div>
     </div>
-    <div class="box" id="testsManage">
-      <div class="title">Ustaw Test</div>
-      <div class="nav">
-        <div class="red-info">anuluj</div>
-        <div class="green-info">zapisz</div>
+  </div>
+  <div class="template" id="question">
+    <div class="question">
+      <span class="mark weight900">1</span>
+      <div class="red-info pointer ">-</div>
+      <div class="desc">
+        <textarea rows="5" cols="30" class="input noResize"></textarea>
       </div>
-      <div class="test">
+      <div class="answers">
         <div>
-          <input
-            type="text"
-            class="input"
-            id="newTestTitle"
-            value="testTitle"
-          />
+          <span class="mark">A</span>
+          <textarea rows="1" cols="30" class="noResize input"></textarea>
         </div>
         <div>
-          <textarea id="newTestDescription" rows="2" class="input noResize">test Description</textarea>
+          <span class="mark">B</span>
+          <textarea rows="1" cols="30" class="noResize input"></textarea>
+        </div>
+        <div>
+          <span class="mark">C</span>
+          <textarea rows="1" cols="30" class="noResize input"></textarea>
+        </div>
+        <div>
+          <span class="mark">D</span>
+          <textarea rows="1" cols="30" class="noResize input"></textarea>
         </div>
       </div>
-      <div class="title">Ustaw pytania</div>
-      <div class="questions">
-
-
-
     </div>
-
-    <div class="footer">
-      <div></div>
+  </div>
+  <div class="quizTitle">zarządzaj testami</div>
+  <div class="box" id="testsSelection">
+    <div class="title">Wybierz Test</div>
+    <div class="nav">
+      <div class="green-info pointer" onclick="createTest()">dodaj test</div>
+    </div>
+    <div class="testsViewer"></div>
+  </div>
+  <div class="box hidden" id="testsManage">
+    <div class="title">Ustaw Test</div>
+    <div class="nav">
+      <div class="red-info pointer" onclick="cancelManage()">anuluj</div>
+      <div class="green-info pointer" onclick="saveManage()">zapisz</div>
+    </div>
+    <div class="test">
       <div>
-        <a href="index.html" class="red-info">powrót</a>
+        <input type="text" class="input" id="newTestTitle" value="testTitle" />
+      </div>
+      <div>
+        <textarea id="newTestDescription" rows="2" class="input noResize">test Description</textarea>
       </div>
     </div>
-    <script src="manage.js"></script>
-  </body>
+    <div class="title">Ustaw pytania</div>
+    <div class="questions">
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div></div>
+    <div>
+      <a href="index.html" class="red-info">powrót</a>
+    </div>
+  </div>
+  <script src="manage.js"></script>
+</body>
+
 </html>
