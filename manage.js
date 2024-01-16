@@ -1,6 +1,8 @@
-const testsViewer = document.querySelector(".testsViewer")
+const testsViewer = document.querySelector(".testsViewer");
 const template = document.querySelector(".template#test > .test ");
-const template_title = document.querySelector(".template#test > .test > .title");
+const template_title = document.querySelector(
+  ".template#test > .test > .title",
+);
 const template_description = document.querySelector(
   ".template#test > .test > .description",
 );
@@ -12,20 +14,19 @@ const template_delete = document.querySelector(
 );
 
 /** @type {HTMLDivElement} */
-const testsManage = document.querySelector("#testsManage")
+const testsManage = document.querySelector("#testsManage");
 /** @type {HTMLDivElement} */
-const testsSelection = document.querySelector("#testsSelection")
+const testsSelection = document.querySelector("#testsSelection");
 
 /** @type {{id:number, title:string, description:string, questions: {id:number}[]}[]} */
 let tests = JSON.parse(localStorage.getItem("tests"));
 function saveTests() {
-  localStorage.setItem("tests", JSON.stringify(tests))
+  localStorage.setItem("tests", JSON.stringify(tests));
   window.location.reload();
 }
 
-
 function deleteTest(id) {
-  tests = tests.filter((v) => v.id != id)
+  tests = tests.filter((v) => v.id != id);
   saveTests();
 }
 function renderTestView(title, description, onManage, onDelete) {
@@ -41,84 +42,108 @@ function renderTestView(title, description, onManage, onDelete) {
 }
 
 tests.forEach((e) => {
-  renderTestView(e.title, e.description, () => { manageTest(e.id) }, () => { deleteTest(e.id) });
+  renderTestView(e.title, e.description, () => {
+    manageTest(e.id);
+  }, () => {
+    deleteTest(e.id);
+  });
 });
 
+// questions
+const questions = document.querySelector(".questions");
+const qtemplate_question = document.querySelector(
+  ".template#question > .question",
+);
+const qtemplate_number = document.querySelector(
+  ".template#question > .question > span",
+);
+const tqtemplate_answers = document.querySelectorAll(
+  ".template#question > .question > .answers > div > textarea",
+);
+const qtemplate_description = document.querySelector(
+  ".template#question > .question > .desc > textarea",
+);
 
-// questions 
-const questions = document.querySelector(".questions")
-const qtemplate_question = document.querySelector(".template#question > .question")
-const qtemplate_number = document.querySelector(".template#question > .question > span")
-const tqtemplate_answers = document.querySelectorAll(".template#question > .question > .answers > div > textarea")
-const qtemplate_description = document.querySelector(".template#question > .question > .desc > textarea")
+const ntest_title = document.querySelector("#newTestTitle");
+const ntest_description = document.querySelector("#newTestDescription");
 
-const ntest_title = document.querySelector("#newTestTitle")
-const ntest_description = document.querySelector("#newTestDescription")
+/** @type {{id: number,description: string, answers: {value: string}[]}[]} */
+let equestions = [];
 
-
-/*
-  5 - desc
-  7 - answers
-*/
 function renderQuestions(description, answers, obj) {
   qtemplate_description.innerHTML = description;
   qtemplate_number.innerHTML = obj.id;
 
   answers.forEach((v, i) => {
     tqtemplate_answers[i].innerHTML = v.value;
-  })
-  let tmp = qtemplate_question.cloneNode(true)
+  });
+  let tmp = qtemplate_question.cloneNode(true);
 
   /**
    * @type {{value: string}[]}
    */
-  let ans = []
+  let ans = [];
   let desc = tmp.childNodes[5].childNodes[1];
 
+  tmp.childNodes[7].childNodes.forEach((v, i) => {
+    if (i % 2 == 0) return;
+    ans.push(v.childNodes[3]);
+  });
+  equestions.push({ id: obj.id, description: desc, answers: ans });
 
-  questions.appendChild(tmp)
+  questions.appendChild(tmp);
 }
 function createTest() {
-
   let i = 0;
-  tests.forEach(v => { if (v.id >= i) { i = v.id + 1 } });
+  tests.forEach((v) => {
+    if (v.id >= i) i = v.id + 1;
+  });
   let mtest = JSON.parse(JSON.stringify(DEFAULT_TEST));
   mtest.id = i;
   tests.push(mtest);
 
   manageTest(i);
-
 }
 function manageTest(id) {
-  questions.innerHTML = ""
-  testsSelection.classList.add("hidden")
-  testsManage.classList.remove("hidden")
+  questions.innerHTML = "";
+  testsSelection.classList.add("hidden");
+  testsManage.classList.remove("hidden");
 
-  let managedTest = tests.find((v) => v.id == id)
+  let managedTest = tests.find((v) => v.id == id);
 
   ntest_title.value = managedTest.title;
-  ntest_description.value = managedTest.description
+  ntest_description.value = managedTest.description;
 
-  managedTest.questions.forEach(v => {
-    renderQuestions(v.description, v.answers, v)
-  })
+  managedTest.questions.forEach((v) => {
+    renderQuestions(v.description, v.answers, v);
+  });
+  // console.log(equestions);
 
-  localStorage.setItem("mtest", JSON.stringify(managedTest))
+  localStorage.setItem("mtest", JSON.stringify(managedTest));
 }
 
 function cancelManage() {
-  localStorage.removeItem("mtest")
+  localStorage.removeItem("mtest");
   window.location.reload();
 }
 function saveManage() {
-  /** @type {{id:number, title:string, description:string, questions: {id:number}[]}} */
+  /** @type {{id:number, title:string, description:string, questions: {id:number, description: string, answers: {value: string}[]}[]}} */
   let mtest = JSON.parse(localStorage.getItem("mtest"));
-  if (mtest == null) window.location.reload();
+  if (mtest == null || equestions.length === 0) window.location.reload();
 
   mtest.title = ntest_title.value;
   mtest.description = ntest_description.value;
 
-  tests = tests.filter((v) => v.id != mtest.id)
+  mtest.questions = [];
+  equestions.forEach((v) => {
+    mtest.questions.push({
+      id: v.id,
+      description: v.description.value,
+      answers: v.answers.map((v) => {return {value: v.value}}),
+    });
+  });
+
+  tests = tests.filter((v) => v.id != mtest.id);
   tests.push(mtest);
 
   saveTests();
