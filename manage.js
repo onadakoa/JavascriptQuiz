@@ -67,7 +67,7 @@ const qtemplate_description = document.querySelector(
 const ntest_title = document.querySelector("#newTestTitle");
 const ntest_description = document.querySelector("#newTestDescription");
 
-/** @type {{id: number,description: string, answers: {value: string}[]}[]} */
+/** @type {{node: HTMLDivElement,id: number,description: string, answers: {value: string}[]}[]} */
 let equestions = [];
 
 function renderQuestions(description, answers, obj) {
@@ -89,9 +89,25 @@ function renderQuestions(description, answers, obj) {
     if (i % 2 == 0) return;
     ans.push(v.childNodes[3]);
   });
-  equestions.push({ id: obj.id, description: desc, answers: ans });
+
+  tmp.childNodes[3].addEventListener("click", () => {
+    tmp.remove();
+    equestions = equestions.filter((v) => v.id != obj.id);
+  });
+  equestions.push({ id: obj.id, description: desc, answers: ans, node: tmp });
 
   questions.appendChild(tmp);
+}
+
+function createQuestion() {
+  let nq = copyObj(NEW_QUESTION);
+  equestions.forEach((v) => {
+    if (v.id >= nq.id) {
+      nq.id = v.id + 1;
+    }
+  });
+  renderQuestions(nq.description, nq.answers, nq);
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 }
 function createTest() {
   let i = 0;
@@ -139,7 +155,9 @@ function saveManage() {
     mtest.questions.push({
       id: v.id,
       description: v.description.value,
-      answers: v.answers.map((v) => {return {value: v.value}}),
+      answers: v.answers.map((v) => {
+        return { value: v.value };
+      }),
     });
   });
 

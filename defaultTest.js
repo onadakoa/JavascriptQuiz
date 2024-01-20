@@ -1,3 +1,6 @@
+function copyObj(obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
 const DEFAULT_TEST = {
   id: 0,
   title: "default",
@@ -33,3 +36,15 @@ const DEFAULT_TEST = {
     },
   ],
 };
+
+const NEW_QUESTION = {
+  id: -1,
+  description: "new",
+  answers: [
+    {value: "A"},
+    {value: "B"},
+    {value: "C"},
+    {value: "D"},
+  ] 
+}
+
