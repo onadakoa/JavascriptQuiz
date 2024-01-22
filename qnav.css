@@ -1,0 +1,30 @@
+
+.qnav {
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    height: max-content;
+}
+
+
+.qnav > * {
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    border: 1px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qnav > .answered {
+    background-color: darkgoldenrod;
+}
+.qnav > .selected {
+    border-color: white;
+}
+.qnav > *:hover {
+    border-width: 2px;
+}
+
