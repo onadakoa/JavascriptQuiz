@@ -1,6 +1,15 @@
+/**
+ * @typedef {{id:number, description:string, answers:{value:string, valid:boolean}[]}} Question
+ * @typedef {{id:number, title:string,description:string,questions:Question[]}} Test
+ */
+
 function copyObj(obj) {
-  return JSON.parse(JSON.stringify(obj))
+  return JSON.parse(JSON.stringify(obj));
 }
+
+/**
+ * @type {Test}
+ */
 const DEFAULT_TEST = {
   id: 0,
   title: "default",
@@ -41,10 +50,9 @@ const NEW_QUESTION = {
   id: -1,
   description: "new",
   answers: [
-    {value: "A"},
-    {value: "B"},
-    {value: "C"},
-    {value: "D"},
-  ] 
-}
-
+    { value: "A" },
+    { value: "B" },
+    { value: "C" },
+    { value: "D" },
+  ],
+};
