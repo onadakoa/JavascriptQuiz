@@ -51,10 +51,20 @@ let questionsI = -1;
 
 /** @param {Test} test  */
 function startTest(test) {
+  rateButton.classList.remove("hidden")
+
   startTime = Date.now();
   startedTest = test;
-  questions = test.questions;
   questionsI = 0;
+
+  /** @type {Question[]} */
+  let tmp = copyObj(test.questions);
+  questions = [];
+  while (tmp.length != 0) {
+    let ran = tmp[random(tmp.length)];
+    questions.push(ran);
+    tmp = tmp.filter((v) => v != ran);
+  }
 
   setQuestion(0);
 }
@@ -78,7 +88,17 @@ function setQuestion(i) {
   questionsI = i;
   let q = questions[questionsI];
   qdescription.innerHTML = q.description;
-  qanswersDiv.forEach((v, i) => {
+
+  let ranArr = [];
+  qanswersDiv.forEach((v) => ranArr.push(v));
+  let qranD = [];
+  while (ranArr.length > 0) {
+    let c = ranArr[random(ranArr.length)]; // -1?
+    qranD.push(c);
+    ranArr = ranArr.filter((l) => l != c);
+  }
+
+  qranD.forEach((v, i) => {
     v.innerHTML = q.answers[i].value;
 
     if (q.chosen == undefined) return;
@@ -118,11 +138,53 @@ function renderQNav() {
   });
 }
 
-const corrects = document.querySelectorAll("#corrects")
+const testResult = document.querySelector("div.testResult");
+const tquestion = document.querySelector(".template > .question");
+const tqdescription = document.querySelector(
+  ".template > .question > .description",
+);
+const tqanswers = document.querySelector(".template > .question > .answers");
 
+const correctCounter = document.querySelector("#correctCounter");
+
+const rateButton = document.querySelector("#rateButton")
 
 function rateTest() {
+  setQuestion(0);
+  rateButton.classList.add("hidden")
+
   testsSection.classList.add("hidden");
   answersSection.classList.add("hidden");
-  statSection.classList.remove("hidden")
+  statSection.classList.remove("hidden");
+
+  let counter = 0;
+
+  questions.forEach((v) => {
+    tqdescription.innerText = v.description;
+    tqanswers.innerHTML = "";
+    v.answers.forEach((b, i) => {
+      let div = document.createElement("div");
+      div.innerText = b.value;
+      tqanswers.appendChild(div);
+
+      if (i == 0) {
+        div.classList.add("correct");
+      }
+      if (v.chosen == undefined) return;
+      v.chosen.forEach((o) => {
+        if (o.value == b.value) {
+          div.classList.add("selected");
+        }
+      });
+    });
+    if (v.chosen != undefined && v.chosen.length == 1) {
+      if (v.chosen[0].value == v.answers[0].value) {
+        counter++;
+      }
+    }
+
+    let tmp = tquestion.cloneNode(true);
+    testResult.appendChild(tmp);
+  });
+  correctCounter.innerHTML = `${counter}/${questions.length}`;
 }

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="test.css" />
     <link rel="stylesheet" href="qnav.css" />
     <link rel="stylesheet" href="questionPanel.css" />
-    <link rel="stylesheet" href="testResult.css">
+    <link rel="stylesheet" href="testResult.css" />
     <style>
       .footer > div {
         /* background-color: red; */
@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="quizTitle">pytania</div>
-    <div class="box hidden" id="testsSection">
+    <div class="box" id="testsSection">
       <div class="title">Wybierz test</div>
       <div class="testsViewer"></div>
     </div>
@@ -99,37 +99,36 @@
         </div>
       </div>
     </div>
-    <div class="box" id="statSection">
+    <div class="box hidden" id="statSection">
       <div class="title">odpowiedzi</div>
       <div>
         <span>poprawne odpowiedzi: </span>
-        <span class="green-info" id="corrects">10/10</span>
+        <span class="green-info" id="correctCounter">10/10</span>
       </div>
-      <div class="testResult">
+      <div class="template">
         <div class="question">
-          <div class="description">
-            description
-          </div>
+          <div class="description">description</div>
           <div class="answers">
             <div class="">answer</div>
             <div class="correct selected">answer</div>
             <div class="selected">answer</div>
           </div>
-        </div> 
-      </div> 
+        </div>
+      </div>
+      <div class="testResult"></div>
     </div>
 
     <div class="footer">
       <div>
-        rozwiązane pytania
-        <span id="correctCount" class="green-info">10/10</span>
+        <!-- something -->
       </div>
       <div>
-        <a onclick="rateTest()" class="pointer">oceń test</a>
+        <a onclick="rateTest()" id="rateButton" class="hidden pointer">oceń test</a>
         <a href="index.html">anuluj</a>
       </div>
     </div>
 
     <script src="test.js"></script>
+    <script src="defaultTest.js"></script>
   </body>
 </html>

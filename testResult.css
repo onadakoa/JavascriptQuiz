@@ -40,3 +40,7 @@
 .testResult > .question > .answers > div.correct{ 
   background-color: green;
 }
+.testResult > .question > .answers > div.correct.selected{ 
+  border: 2px solid white;
+  box-sizing: border-box;
+}
