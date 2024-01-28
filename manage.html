@@ -73,6 +73,9 @@
         box-sizing: border-box;
         text-align: center;
       }
+      .correct {
+        background-color: green;
+      }
     </style>
   </head>
 
@@ -98,7 +101,7 @@
         </div>
         <div class="answers">
           <div>
-            <span class="mark">A</span>
+            <span class="mark correct">A</span>
             <textarea rows="1" cols="30" class="noResize input"></textarea>
           </div>
           <div>
@@ -146,6 +149,9 @@ test Description</textarea
         </div>
       </div>
       <div class="title">Ustaw pytania</div>
+      <div>
+        opowiedź <span class="mark correct">A</span> jest poprawną opowiedzią
+      </div>
       <div class="nav">
         <div class="green-info pointer" onclick="createQuestion()">dodaj pytanie</div>
       </div>
