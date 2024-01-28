@@ -49,11 +49,25 @@ let startedTest;
 let questions;
 let questionsI = -1;
 
+const timer = document.querySelector("#timer")
+
 /** @param {Test} test  */
 function startTest(test) {
   rateButton.classList.remove("hidden")
 
   startTime = Date.now();
+  let interval = setInterval(() => {
+    let time = (1000*60*10) - (Date.now() - startTime);
+  
+    timer.innerHTML = `${Math.floor(time/1000/60)}:${Math.round(time/1000%60)}`
+  
+    if (time <= 0) {
+      clearInterval(interval)
+      rateTest();
+    }
+  }, 1000)
+
+
   startedTest = test;
   questionsI = 0;
 
@@ -67,6 +81,8 @@ function startTest(test) {
   }
 
   setQuestion(0);
+
+
 }
 
 function setQuestion(i) {
